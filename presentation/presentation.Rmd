@@ -1,0 +1,181 @@
+---
+title: Creating Economic Tutorials with \faRProject \ and `learnr`
+subtitle: Vanguard Scientific Instruments in Management\' 2023
+author: Lyuben Ivanov, PhD
+date: \today
+institute: Faculty of Economics and Business, Sofia University
+output: binb::metropolis
+fontsize: 12pt
+header-includes:
+  - \input{epigraph.tex}
+  - \usepackage{fontawesome5}
+  - \usepackage{adjustbox}
+  - \usepackage{collectbox}
+  - \usepackage{graphicx}
+  - \usepackage{xkeyval}
+  - \usepackage{ifpdf}
+  - \usepackage{adjcalc}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r,setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE, echo = FALSE)
+options(digits = 2, scipen = 999)
+library(vsim23)
+```
+
+# Introduction to `R` and `learnr`
+
+## What is R?
+
+\epigraph{\texttt{R} is a system for statistical computation and graphics.}{\texttt{R} Core Team}
+
+`R` provides, among other things:
+
+-   a programming language;
+
+-   high level graphics;
+
+-   interfaces to other languages;
+
+-   debugging facilities.
+
+## Design Principles of \texttt{R}
+
+\epigraph{Everything that exists in \texttt{R} is an object.}{John M. Chambers}
+
+\epigraph{Everything that happens in \texttt{R} is a function call.}{John M. Chambers}
+
+\epigraph{Interfaces to other languages are a part of \texttt{R}.}{John M. Chambers}
+
+## R Genealogy
+
+```{r RhistoryFig, echo = FALSE, fig.height = 5.4, warning = FALSE}
+
+rgen()
+
+```
+
+## What is `learnr`?
+
+`learnr` is an `R` package created and maintained by employees of Posit
+(formerly RStudio).
+
+It creates interactive tutorials using `R Markdown` and `Shiny`.
+
+`learnr` uses a combination of:
+
+-   narrative,
+
+-   figures,
+
+-   videos,
+
+-   exercises,
+
+-   and quizzes
+
+to create self-paced tutorials for learning about `R` and `R` packages.
+
+## RStudio/Posit: The Company Behind `learnr`!
+
+```{r kableEx, warning = FALSE, echo = FALSE}
+vsim23::top_downloads |>
+  knitr::kable(caption = "Top 5 most downloaded packages in August 2023")
+```
+
+                   Source: https://cran.rstudio.com
+
+## The Pillars of `learnr`
+
+Developer interface (`R Studio` + `knitr` + `pandoc`):
+
+-   `learnr` tutorials are built around R Markdown documents;
+-   `shiny` inputs and outputs are components of HTML-based Rmd
+    documents;
+-   `shiny` apps are easily embedded in HTML-based Rmd documents;
+-   `shiny` apps published on the web can also be included with
+    `knitr::include_app()`.
+
+Web interface (`shiny`):
+
+-   use `R` functions to create HTML and CSS code;
+-   publish tutorials on <https://shinyapps.io>, Shiny Server or Posit
+    Connect.
+
+## The Growing Popularity of `learnr` (Downloads per Year)
+
+```{r packagepopularity, echo = FALSE, fig.height = 5.4, warning = FALSE}
+
+vsim23::learnr_downloads |>
+  dplyr::select(`annual downloads`) |>
+  as.matrix() |>
+  barplot(beside = TRUE, 
+          names.arg = 2017:2023, 
+          border = NA, 
+          space = 0.5, 
+          yaxt = "n", 
+          col = gray.colors(7)
+          )
+
+axis(						                            # add y-axis to plot
+  side = 2, 				                        # axis should be drawn on left side
+  at = axTicks(2),
+  las = 2,                        	      	# horizontal labels
+  tick = F,				                          # remove ticks
+  labels = axTicks(2) |> format(big.mark = ",")
+)
+
+abline(				    	
+  h = axTicks(2),
+  col = "white",	  	# specify color of horizontal lines
+  lwd = 1		        	# specify horizontal lines width
+  )
+```
+
+
+
+## `learnr` Tutorials Hosted in the Cloud
+
+[**Posit Cloud Primers**](https://posit.cloud/learn/primers)
+
+Twenty six `learnr` tutorials divided into 6 topics: 
+
+-  The Basics;
+-  Work with Data; 
+-  Visualize Data; 
+-  Tidy Your Data;
+-  Iterate;
+-  Write Functions.
+
+## `learnr` Tutorials Hosted in the Cloud
+\epigraph{\texttt{R} was written for statisticians, by statisticians.}{Marek Gagolewski}
+
+[**OpenIntro::Introduction to Modern Statistics**](https://openintrostat.github.io/ims-tutorials/)
+
+Six `learnr` tutorials, each of them corresponding to one part of the book and
+comprised of multiple lessons for a total of 35 lessons that cover the entire
+content of the book.
+
+## `learnr` Tutorials Distrubuted as `R` Packages
+
+\epigraph{When assigned 'R for Data Science'tudents should read the book and type in all the associated R commands themselves. Sadly, that never happens. These tutorials allow students to demonstrate (and their instructors to be sure) that all work has been completed.}{David Kane}
+
+## `learnr` Tutorials Distrubuted as `R` Packages
+
+[**Kane, D. (2023) r4ds.tutorials: Tutorials for 'R for Data Science'**](https://cran.r-project.org/package=r4ds.tutorials)
+
+[**Kane, D. (2023) tidymodel.tutorials: Tutorials for 'Tidy Modeling with R'**](https://ppbds.github.io/tidymodels.tutorials/)
+
+[**Kane, D. (2023) primer.tutorials: Tutorials for 'Primer for Bayesian Data Science'**](https://ppbds.github.io/primer.tutorials/)
+
+[**Kane D (2023) tidycensus.tutorials: Tutorials for Analyzing US Census Data. **](https://ppbds.github.io/tidycensus.tutorials/)
+
+## Demo Tutorial
+
+
+
+
+

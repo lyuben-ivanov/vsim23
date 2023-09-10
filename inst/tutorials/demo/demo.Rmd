@@ -1,0 +1,297 @@
+---
+title: "VSIM'23 Demo Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(learnrhash)
+library(fontawesome)
+library(econres)
+library(ter)
+library(praise)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Video Tutorial with a Multiple Choice Quiz
+
+The video below is part of Federal Reserve Bank of St. Louis Economic Lowdown 
+Video Series. It uses the fictional economy of Econ Isle to explain how limited 
+resources result in a scarcity problem for the economy. Econ Isle’s production 
+possibilities are graphed to show its frontier, and then used to discuss the 
+opportunity costs of its production and consumption decisions. 
+
+Please, watch the video and use the information in it to complete the quiz that
+follows. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nsQi2ipSP2c?si=hR8dMImD7OpEt8ZA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+```{r ppf_quiz_1}
+x <- sample(
+  c("natural resources", "labor", "capital resources"), 
+  size = 1
+)
+
+y <- list(
+  q11 = learnr::question(
+    text = "1.1. What is an economist most likely to associate with the word 
+    'frontier'?",
+    learnr::answer("Westward expansion."),
+    learnr::answer("Outer space."),
+    learnr::answer("Alaska."), 
+    learnr::answer("An outer limit of economic production.", correct = TRUE),
+    random_answer_order = TRUE),
+  q12 = learnr::question(
+    text = "1.2. Which are the only two products that the island nation of Econ Isle 
+    can produce?", 
+    learnr::answer("Bananas and coconuts."), 
+    learnr::answer("Widgets and gadgets.", correct = TRUE),
+    learnr::answer("Pizzas and robots."),
+    learnr::answer("Coffee and cacao."), 
+    random_answer_order = TRUE,
+    correct = praise::praise(template = "${Exclamation}! You are ${adjective}!") 
+  )
+)
+
+learnr::quiz(
+  
+  y[[sample(1:2, 1)]],
+  
+  question(
+    text = paste0("2. Which of the following can be considered \'", x, "\'?"),
+    answer("Water, trees and oil.", correct = (x == "natural resources")),
+    answer("Drills, computers and robots.", correct = (x == "capital resources")),
+    answer("Quantity of human effort directed towards production.", correct = (x == "labor")),
+    correct = praise::praise(template = "${Exclamation}! You are ${adjective}!")
+  ),
+  
+  caption = "Multiple Choice Quiz"
+  
+)
+
+```
+`r fontawesome::fa(name = "exclamation-circle")` _In the demo quiz above the first question is randomly sampled from a list of two different questions, while the second question uses the same phrasing but the words in quotes are randomly sampled from a vector of three possible options, effectively creating three similar but different questions (with different correct answers)._
+
+## Randomly Generated Diagram and a Multiple Choice Question
+```{r random_diagram_data}
+
+qp1 <- sample(5:60, size = 1)
+qp2 <- sample(5:30, size = 1)
+```
+
+```{r random_diagram}
+
+ter::ppf_plot(
+             x_axis_label = "Quantity of widgets", 
+             y_axis_label = "Quantity of gadgets", 
+             plot_point = TRUE, 
+             quantity_of_product_1 = qp1, 
+             quantity_of_product_2 = qp2
+             )
+
+```
+
+```{r random_diagram_question}
+c <- 60 - (60/(30^2)) * (qp1^2) 
+
+question(
+  text = "Point A is:",
+  answer("Feasible but inefficient.", correct = (c > qp2)),
+  answer("Efficient.", correct = dplyr::between(c/qp2, 0.99, 1.01)),
+  answer("Desirable but not feasible.", correct = (c < qp2)),
+  random_answer_order = TRUE, 
+  correct = praise::praise(template = "${Exclamation}! You are ${adjective}!") 
+)
+
+```
+
+## `Shiny` Component with an Essay Question
+
+
+```{r userinterface}
+fluidPage(
+
+  # Sidebar with a slider input for maximum quantity of widgets and gadgets
+  sidebarLayout(
+
+    # Show a plot of the production possibilities frontier
+    mainPanel(
+      plotOutput("ppfPlot"),
+       # p("The diagram above shows the island economy of Econ Isle. Use the sliders to see what happens when one or more of the factors that affect the output of that country changes and then use the texbox below to write a short essay of what needs to be done for the Econ Isle to be able to produce the quantities of gadgets and widgets associated with point A.")
+    ),
+
+    # Show sliders to change the maximum amounts of widgets and gadgets
+    sidebarPanel(
+      sliderInput("Land",
+                  "Natural resources:",
+                  min = 1,
+                  max = 10,
+                  value = 5),
+
+      sliderInput("Labour",
+                  "Labour:",
+                  min = 1,
+                  max = 10,
+                  value = 5),
+
+      sliderInput("PhysicalCapital",
+                  "Physical capital:",
+                  min = 1,
+                  max = 10,
+                  value = 5),
+
+
+      sliderInput("Technology",
+                  "Level of technology:",
+                  min = 5,
+                  max = 10,
+                  value = 5)
+    )
+    
+  )  
+
+)
+```
+
+```{r, context="server"}
+output$ppfPlot <- renderPlot({
+    # calculate the new maximum quantities of widgets and gadgets based on
+    # input$Land, input$Labour, input$PhysicalCapital, input$Technology
+
+    widgets <-
+      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*3
+
+    gadgets <-
+      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*1.5
+
+    # draw plot based on input$widgets and input$gadgets from ui and ppf_plot 
+    # from package ter
+
+    ter::ppf_plot(new_maximum_quantity_of_product_1 = widgets,
+             new_maximum_quantity_of_product_2 = gadgets,
+             plot_new_frontier = TRUE, 
+             x_axis_label = "Quantity of widgets", 
+             y_axis_label = "Quantity of gadgets", 
+             plot_point = TRUE, 
+             quantity_of_product_1 = 40, 
+             quantity_of_product_2 = 30
+             )
+
+  })
+
+
+```
+
+```{r essay_question}
+
+question_text(
+  text = "The diagram above shows the island economy of Econ Isle. Use the sliders to see what happens when one or more of the factors that affect the output of that country changes. Then use the text box below to write a short essay describing what can be done for the Econ Isle to be able to produce the quantities of gadgets and widgets shown on the diagram by point A. Please try to be very specific in your answer (e.g. \"the physical capital needs to increase by 60%\" is much better than just the \"physical capital needs to increase\")",
+  answer_fn(
+    fn = function(x) {correct(messages = paste("Thank you for your analysis!", random_praise(language = "en")))}
+  ), 
+  rows = 6,
+  correct = NULL
+)
+
+
+```
+
+## Feedback Form
+
+```{r feedback_form}
+
+quiz(
+  question_text(
+  text = "Dear learner, I hope you liked the tutorial and find it useful. Please leave any comments, suggestions or other feedback at the text box below. Your feedback would be most appreciated!",
+  answer_fn(
+    fn = function(x) {correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
+  ), 
+  rows = 6,
+  correct = NULL
+   ),
+  question_numeric(
+    text = "Dear learner, please rate the experience you had with this tutorial so far on a scale from 1 (very negative experience) to 10 (very positive experience). Your feedback is much appreciated!",
+    answer_fn(
+    fn = function(x) {if (dplyr::between(x, 1, 10)) correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
+  ),
+  min = 1,
+  max = 10,
+  correct = NULL, 
+  allow_retry = TRUE,
+  incorrect = "Hm, it seems that your rating is outside of the selected range. Please try again!"
+  ),
+  caption = "Feedback form"
+)
+
+
+
+
+```
+
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = learnrhash::default_ui(url = "lyuben.ivanov@gmail.com"))
+```
+
+
+## Numeric Question with Random Elements
+
+```{r numeric_question}
+
+nql <- list(
+  q11 = question_numeric(
+  text = paste0("Imagine that the economy of Econ Isle currently is producing ", 100, " widgets. If the production of widgets grows with ", 20, "% per year, what will be quantity of widgets produced after ", 5, " years?"),
+  answer_fn(
+    fn = function(value, b = 100, gr = 20, period = 5) {
+      if (value == round(b*(1+gr/100)^period)) correct()
+    }
+  ),
+  allow_retry = TRUE
+  ),
+  q12 = question_numeric(
+  text = paste0("Imagine that the economy of Econ Isle currently is producing ", 120, " widgets. If the production of widgets grows with ", 30, "% per year, what will be quantity of widgets produced after ", 7, " years?"),
+  answer_fn(
+    fn = function(value, b = 120, gr = 30, period = 7) {
+      if (value == round(b*(1+gr/100)^period)) correct()
+    }
+  ),
+  allow_retry = TRUE
+  ),
+  q13 = question_numeric(
+  text = paste0("Imagine that the economy of Econ Isle currently is producing ", 200, " widgets. If the production of widgets grows with ", 40, "% per year, what will be quantity of widgets produced after ", 10, " years?"),
+  answer_fn(
+    fn = function(value, b = 200, gr = 40, period = 10) {
+      if (value == round(b*(1+gr/100)^period)) correct()
+    }
+  ),
+  allow_retry = TRUE
+  ),
+  q14 = question_numeric(
+  text = paste0("Imagine that the economy of Econ Isle currently is producing ", 50, " widgets. If the production of widgets grows with ", 25, "% per year, what will be quantity of widgets produced after ", 9, " years?"),
+  answer_fn(
+    fn = function(value, b = 50, gr = 25, period = 9) {
+      if (value == round(b*(1+gr/100)^period)) correct()
+    }
+  ),
+  allow_retry = TRUE
+  )
+)
+
+quiz(
+  nql[[sample(1:4, 1)]],
+  caption = " "
+)
+
+
+
+```
+

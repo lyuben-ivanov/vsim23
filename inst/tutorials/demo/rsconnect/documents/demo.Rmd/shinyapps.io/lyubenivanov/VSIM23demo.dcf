@@ -1,0 +1,12 @@
+name: VSIM23demo
+title: VSIM23demo
+username: lyubenivanov
+account: lyubenivanov
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9754320
+bundleId: 7665037
+url: https://lyubenivanov.shinyapps.io/VSIM23demo/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
