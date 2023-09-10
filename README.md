@@ -6,7 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of vsim23 is to provide all the resources for
+The goal of vsim23 is to provide all the resources supplementing the
+presentation “Creating Economic Tutorials with `R` and `learnr`”.
 
 ## Installation
 
