@@ -26,7 +26,7 @@ options(digits = 2, scipen = 999)
 library(vsim23)
 ```
 
-# Introduction to `R` and `learnr`
+# Introduction to `R`
 
 ## What is R?
 
@@ -42,13 +42,6 @@ library(vsim23)
 
 -   debugging facilities.
 
-## Design Principles of \texttt{R}
-
-\epigraph{Everything that exists in \texttt{R} is an object.}{John M. Chambers}
-
-\epigraph{Everything that happens in \texttt{R} is a function call.}{John M. Chambers}
-
-\epigraph{Interfaces to other languages are a part of \texttt{R}.}{John M. Chambers}
 
 ## R Genealogy
 
@@ -57,6 +50,24 @@ library(vsim23)
 rgen()
 
 ```
+
+
+## The Birth of Scheme
+
+\epigraph{Scheme, the dialect of Lisp that we use, is an attempt to bring together the power and elegance of Lisp and Algol. 
+From Lisp we take the metalinguistic power that derives from the simple syntax, the uniform representation of programs as data objects, and the garbage-collected heap-allocation data.
+From Algol we take lexical scoping and block structure, which are gifts from the pioneers of programming language design\ldots}{Abelson and Sussman. }
+
+## Design Principles of \texttt{R}
+
+\epigraph{Everything that exists in \texttt{R} is an object.}{John M. Chambers}
+
+\epigraph{Everything that happens in \texttt{R} is a function call.}{John M. Chambers}
+
+\epigraph{Interfaces to other languages are a part of \texttt{R}.}{John M. Chambers}
+
+
+# Introduction to `learnr`
 
 ## What is `learnr`?
 
@@ -105,7 +116,9 @@ Web interface (`shiny`):
 -   publish tutorials on <https://shinyapps.io>, Shiny Server or Posit
     Connect.
 
-## The Growing Popularity of `learnr` (Downloads per Year)
+# The Use of `learnr` Tutorials
+
+## The Growing Use of `learnr` (Downloads per Year)
 
 ```{r packagepopularity, echo = FALSE, fig.height = 5.4, warning = FALSE}
 
@@ -173,9 +186,42 @@ content of the book.
 
 [**Kane D (2023) tidycensus.tutorials: Tutorials for Analyzing US Census Data. **](https://ppbds.github.io/tidycensus.tutorials/)
 
+# A Hands-on Experience with a Demo Tutorial
+
 ## Demo Tutorial
 
+You can see a demo tutorial directly by visiting
 
+https://lyubenivanov.shinyapps.io/VSIM23demo
 
+or by installing the package `vsim23` from GitHub (https://github.com/lyuben-ivanov/vsim23)
+
+and loading the tutorial with:
+
+```
+learnr::run_tutorial(
+  name = "demo", 
+  package = "vsim23"
+  )
+```
+## Key Takeaways
+
+Advantages of using `learnr` to create learning resources
+
+-  easy to create multiple similar questions by programming
+
+-  uses `R`'s powerful graphic and computation engines
+
+-  facilitates cooperation due to strong [GitHub](https://github.com/) integration
+
+-  easy to reuse own code and other people's code
+
+Disadvantages of using `learnr` to create learning resources
+
+-  not very mature (current version is 0.11.4) 
+
+-  much more suitable for formative rather than for summative assessment
+
+-  not a learning management system (yet?)
 
 
