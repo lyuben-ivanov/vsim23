@@ -26,7 +26,7 @@ Remotes:
     github::PPBDS/tidycensus.tutorials,
     github::PPBDS/primer.tutorials,
     github::PPBDS/r4ds.tutorials,
-    rundel/learnrhash
+    github::rundel/learnrhash
 Suggests: 
     primer.tutorials (>= 1.2.2.9000),
     r4ds.tutorials (>= 0.1.4),
