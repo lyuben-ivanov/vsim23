@@ -5,7 +5,7 @@ account: lyubenivanov
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9754320
-bundleId: 7665037
+bundleId: 7665783
 url: https://lyubenivanov.shinyapps.io/VSIM23demo/
 version: 1
 asMultiple: FALSE
