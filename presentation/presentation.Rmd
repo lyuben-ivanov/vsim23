@@ -2,7 +2,7 @@
 title: Creating Economic Tutorials with \faRProject \ and `learnr`
 subtitle: Vanguard Scientific Instruments in Management\' 2023
 author: Lyuben Ivanov, PhD
-date: \today
+date: Sep 10, 2023
 institute: Faculty of Economics and Business, Sofia University
 output: binb::metropolis
 fontsize: 12pt
@@ -112,7 +112,7 @@ Developer interface (`R Studio` + `knitr` + `pandoc`):
 
 Web interface (`shiny`):
 
--   use `R` functions to create HTML and CSS code;
+-   use \faRProject functions to create HTML and CSS code;
 -   publish tutorials on <https://shinyapps.io>, Shiny Server or Posit
     Connect.
 
@@ -190,11 +190,11 @@ content of the book.
 
 ## Demo Tutorial
 
-You can see a demo tutorial directly by visiting
+You can experiment with demo tutorial prepared for this conference by visiting
 
 https://lyubenivanov.shinyapps.io/VSIM23demo
 
-or by installing the package `vsim23` from GitHub (https://github.com/lyuben-ivanov/vsim23)
+or by installing the package `vsim23` from \faGithub\ (https://github.com/lyuben-ivanov/vsim23)
 
 and loading the tutorial with:
 
@@ -207,21 +207,19 @@ learnr::run_tutorial(
 ## Key Takeaways
 
 Advantages of using `learnr` to create learning resources
-
--  easy to create multiple similar questions by programming
-
--  uses `R`'s powerful graphic and computation engines
-
--  facilitates cooperation due to strong [GitHub](https://github.com/) integration
-
--  easy to reuse own code and other people's code
+\begin{itemize}
+\item [{\faThumbsUp[regular]}] easy to create multiple similar questions by programming
+\item [{\faThumbsUp[regular]}] uses \faRProject's powerful graphic and computation engines
+\item [{\faThumbsUp[regular]}] facilitates cooperation due to strong \faGithub\ integration
+\item [{\faThumbsUp[regular]}] easy to reuse own code and other people's code
+\end{itemize}
 
 Disadvantages of using `learnr` to create learning resources
+\begin{itemize}
+\item [{\faThumbsDown[regular]}] not very mature (current version is 0.11.4) 
+\item [{\faThumbsDown[regular]}] much more suitable for formative rather than for summative assessment
+\item [{\faThumbsDown[regular]}] not a learning management system (yet?)
+\end{itemize}
 
--  not very mature (current version is 0.11.4) 
-
--  much more suitable for formative rather than for summative assessment
-
--  not a learning management system (yet?)
 
 
