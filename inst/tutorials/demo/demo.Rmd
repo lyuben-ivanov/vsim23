@@ -2,6 +2,7 @@
 title: "VSIM'23 Demo Tutorial"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: A tutorial, demonstrating how `R` and `learnr` can be used for teaching economics, prepared for the VSIM'23 conference.
 ---
 
 ```{r setup, include=FALSE}
