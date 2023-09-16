@@ -107,7 +107,7 @@ Developer interface (`R Studio` + `knitr` + `pandoc`):
 
 Web interface (`shiny`):
 
--   use \faRProject functions to create HTML and CSS code;
+-   use \faRProject\ functions to create HTML and CSS code;
 -   publish tutorials on <https://shinyapps.io>, Shiny Server or Posit
     Connect.
 
@@ -179,7 +179,13 @@ content of the book.
 
 [**Kane, D. (2023) primer.tutorials: Tutorials for 'Primer for Bayesian Data Science'**](https://ppbds.github.io/primer.tutorials/)
 
-[**Kane D (2023) tidycensus.tutorials: Tutorials for Analyzing US Census Data. **](https://ppbds.github.io/tidycensus.tutorials/)
+[**Kane, D. (2023) tidycensus.tutorials: Tutorials for Analyzing US Census Data. **](https://ppbds.github.io/tidycensus.tutorials/)
+
+## `learnr` Tutorials Distrubuted as `R` Packages
+
+[**Field, A. (2020) adventr: Interactive R Tutorials to Accompany Field (2016), "An Adventure in Statistics"**](https://cran.r-project.org/package=adventr)
+
+[**Field, A. (2023) discovr: Interactive R Tutorials to Accompany Field (2023), "Discovering Statistics Using R and RStudio"**](https://github.com/profandyfield/discovr)
 
 # A Hands-on Experience with a Demo Tutorial Demonstrating How `learnr` Can Be Used for Teaching Economics
 
