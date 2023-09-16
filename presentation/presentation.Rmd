@@ -9,12 +9,7 @@ fontsize: 12pt
 header-includes:
   - \input{epigraph.tex}
   - \usepackage{fontawesome5}
-  - \usepackage{adjustbox}
-  - \usepackage{collectbox}
   - \usepackage{graphicx}
-  - \usepackage{xkeyval}
-  - \usepackage{ifpdf}
-  - \usepackage{adjcalc}
 editor_options: 
   markdown: 
     wrap: 72
@@ -56,7 +51,7 @@ rgen()
 
 \epigraph{Scheme, the dialect of Lisp that we use, is an attempt to bring together the power and elegance of Lisp and Algol. 
 From Lisp we take the metalinguistic power that derives from the simple syntax, the uniform representation of programs as data objects, and the garbage-collected heap-allocation data.
-From Algol we take lexical scoping and block structure, which are gifts from the pioneers of programming language design\ldots}{Abelson and Sussman. }
+From Algol we take lexical scoping and block structure, which are gifts from the pioneers of programming language design\ldots}{Abelson and Sussman}
 
 ## Design Principles of \texttt{R}
 
@@ -116,9 +111,9 @@ Web interface (`shiny`):
 -   publish tutorials on <https://shinyapps.io>, Shiny Server or Posit
     Connect.
 
-# The Use of `learnr` Tutorials
+# The Use of `learnr` Tutorials by Statisticans and Data Scientists
 
-## The Growing Use of `learnr` (Downloads per Year)
+## The Use of `learnr` Over Time (Downloads per Year)
 
 ```{r packagepopularity, echo = FALSE, fig.height = 5.4, warning = FALSE}
 
@@ -186,7 +181,7 @@ content of the book.
 
 [**Kane D (2023) tidycensus.tutorials: Tutorials for Analyzing US Census Data. **](https://ppbds.github.io/tidycensus.tutorials/)
 
-# A Hands-on Experience with a Demo Tutorial
+# A Hands-on Experience with a Demo Tutorial Demonstrating How `learnr` Can Be Used for Teaching Economics
 
 ## Demo Tutorial
 
@@ -220,6 +215,21 @@ Disadvantages of using `learnr` to create learning resources
 \item [{\faThumbsDown[regular]}] much more suitable for formative rather than for summative assessment
 \item [{\faThumbsDown[regular]}] not a learning management system (yet?)
 \end{itemize}
+
+## Questions? 
+
+\begin{center} 
+\resizebox{0.27\linewidth}{!}{\faQuestionCircle[regular]}
+\end{center}
+
+## Thank you! 
+
+\begin{center} 
+\resizebox{0.27\linewidth}{!}{\faGrin[regular]}
+\end{center}
+
+
+
 
 
 
