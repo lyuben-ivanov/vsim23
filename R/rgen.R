@@ -9,6 +9,12 @@
 #'
 #' rgen()
 #'
+#' @importFrom graphics arrows
+#' @importFrom graphics axis
+#' @importFrom graphics lines
+#' @importFrom graphics par
+#' @importFrom graphics strwidth
+#' @importFrom graphics text
 rgen <- function() {
   def.par = par(no.readonly = TRUE) # save current par() settings
 
