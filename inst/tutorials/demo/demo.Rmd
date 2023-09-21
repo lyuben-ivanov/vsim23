@@ -7,7 +7,7 @@ description: A tutorial, demonstrating how `R` and `learnr` can be used for teac
 
 ```{r setup, include=FALSE}
 library(learnr)
-library(learnrhash)
+if (require(learnrhash)) library(learnrhash)
 library(fontawesome)
 library(econres)
 library(ter)
