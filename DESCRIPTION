@@ -16,7 +16,6 @@ Imports:
     dplyr,
     fontawesome,
     learnr,
-    learnrhash (>= 0.2.0),
     praise
 Depends: 
     R (>= 2.10)
@@ -28,6 +27,7 @@ Remotes:
     github::PPBDS/r4ds.tutorials,
     github::rundel/learnrhash
 Suggests: 
+    learnrhash (>= 0.2.0),
     primer.tutorials (>= 1.2.2.9000),
     r4ds.tutorials (>= 0.1.4),
     tidycensus.tutorials (>= 0.0.0.9001),
