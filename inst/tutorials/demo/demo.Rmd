@@ -8,7 +8,6 @@ description: A tutorial, demonstrating how `R` and `learnr` can be used for teac
 ```{r setup, include=FALSE}
 library(learnr)
 if (require(learnrhash)) library(learnrhash)
-library(fontawesome)
 library(econres)
 library(ter)
 library(praise)
@@ -74,13 +73,13 @@ learnr::quiz(
 )
 
 ```
-`r fontawesome::fa(name = "exclamation-circle")` _In the demo quiz above the first question is randomly sampled from a list of two different questions, while the second question uses the same phrasing but the words in quotes are randomly sampled from a vector of three possible options, effectively creating three similar but different questions (with different correct answers)._
+`r shiny::icon("exclamation-circle")` _In the demo quiz above the first question is randomly sampled from a list of two different questions, while the second question uses the same phrasing but the words in quotes are randomly sampled from a vector of three possible options, effectively creating three similar but different questions (with different correct answers)._
 
 ## Randomly Generated Diagram and a Multiple Choice Question
 ```{r random_diagram_data}
 
-qp1 <- sample(5:60, size = 1)
-qp2 <- sample(5:30, size = 1)
+qp1 <- sample(5:80, size = 1)
+qp2 <- sample(5:40, size = 1)
 ```
 
 ```{r random_diagram}
@@ -89,14 +88,16 @@ ter::ppf_plot(
              x_axis_label = "Quantity of widgets", 
              y_axis_label = "Quantity of gadgets", 
              plot_point = TRUE, 
+             point_label = "A",
              quantity_of_product_1 = qp1, 
-             quantity_of_product_2 = qp2
+             quantity_of_product_2 = qp2,
+             plot_new_point = FALSE
              )
 
 ```
 
 ```{r random_diagram_question}
-c <- 60 - (60/(30^2)) * (qp1^2) 
+c <- 40 - (40/(80^2)) * (qp1^2) 
 
 question(
   text = "Point A is:",
@@ -163,10 +164,10 @@ output$ppfPlot <- renderPlot({
     # input$Land, input$Labour, input$PhysicalCapital, input$Technology
 
     widgets <-
-      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*3
+      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*4
 
     gadgets <-
-      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*1.5
+      sum(input$Land, input$Labour, input$PhysicalCapital, input$Technology)*2
 
     # draw plot based on input$widgets and input$gadgets from ui and ppf_plot 
     # from package ter
@@ -177,8 +178,10 @@ output$ppfPlot <- renderPlot({
              x_axis_label = "Quantity of widgets", 
              y_axis_label = "Quantity of gadgets", 
              plot_point = TRUE, 
-             quantity_of_product_1 = 40, 
-             quantity_of_product_2 = 30
+             quantity_of_product_1 = 47.1, 
+             quantity_of_product_2 = 26.1,
+             point_label = "A", 
+             plot_new_point = FALSE
              )
 
   })
