@@ -7,11 +7,10 @@ description: A tutorial, demonstrating how `R` and `learnr` can be used for teac
 
 ```{r setup, include=FALSE}
 library(learnr)
-library(econres)
 library(ter)
 library(praise)
 
-if ("learnrhash" %in% rownames(installed.packages())) library(learnrhash)
+# if ("learnrhash" %in% rownames(installed.packages())) library(learnrhash)
 
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -237,16 +236,16 @@ quiz(
 
 ```
 
-## Submit
+<!-- ## Submit -->
 
-```{r context="server"}
+<!-- ```{r context="server"} -->
 
-if ("learnrhash" %in% rownames(installed.packages())) learnrhash::encoder_logic()
-```
+<!-- if ("learnrhash" %in% rownames(installed.packages())) learnrhash::encoder_logic() -->
+<!-- ``` -->
 
-```{r encode, echo=FALSE}
-if ("learnrhash" %in% rownames(installed.packages())) learnrhash::encoder_ui(ui_before = learnrhash::default_ui(url = "lyuben.ivanov@gmail.com"))
-```
+<!-- ```{r encode, echo=FALSE} -->
+<!-- if ("learnrhash" %in% rownames(installed.packages())) learnrhash::encoder_ui(ui_before = learnrhash::default_ui(url = "lyuben.ivanov@gmail.com")) -->
+<!-- ``` -->
 
 
 ## Numeric Question with Random Elements
