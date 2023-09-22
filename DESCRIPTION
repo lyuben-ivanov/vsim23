@@ -14,9 +14,11 @@ Imports:
     binb,
     cranlogs,
     dplyr,
+    econres,
     fontawesome,
     learnr,
-    praise
+    praise,
+    ter
 Depends: 
     R (>= 2.10)
 LazyData: true
@@ -25,12 +27,12 @@ Remotes:
     github::PPBDS/tidycensus.tutorials,
     github::PPBDS/primer.tutorials,
     github::PPBDS/r4ds.tutorials,
-    github::rundel/learnrhash
+    github::rundel/learnrhash,
+    github::lyuben-ivanov/ter (>= 0.1.0)
 Suggests: 
     learnrhash (>= 0.2.0),
     primer.tutorials (>= 1.2.2.9000),
     r4ds.tutorials (>= 0.1.4),
-    tidycensus.tutorials (>= 0.0.0.9001),
-    ter (>= 0.1.0)
+    tidycensus.tutorials (>= 0.0.0.9001)
 URL: https://github.com/lyuben-ivanov/vsim23
 BugReports: https://github.com/lyuben-ivanov/vsim23/issues
