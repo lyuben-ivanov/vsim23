@@ -204,37 +204,6 @@ question_text(
 
 ```
 
-## Feedback Form
-
-```{r feedback_form}
-
-quiz(
-  question_text(
-  text = "Dear learner, I hope you liked the tutorial and find it useful. Please leave any comments, suggestions or other feedback at the text box below. Your feedback would be most appreciated!",
-  answer_fn(
-    fn = function(x) {correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
-  ), 
-  rows = 6,
-  correct = NULL
-   ),
-  question_numeric(
-    text = "Dear learner, please rate the experience you had with this tutorial so far on a scale from 1 (very negative experience) to 10 (very positive experience). Your feedback is much appreciated!",
-    answer_fn(
-    fn = function(x) {if (dplyr::between(x, 1, 10)) correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
-  ),
-  min = 1,
-  max = 10,
-  correct = NULL, 
-  allow_retry = TRUE,
-  incorrect = "Hm, it seems that your rating is outside of the selected range. Please try again!"
-  ),
-  caption = "Feedback form"
-)
-
-
-
-
-```
 
 <!-- ## Submit -->
 
@@ -299,4 +268,31 @@ quiz(
 
 
 ```
+## Feedback Form
 
+```{r feedback_form}
+
+quiz(
+  question_text(
+  text = "Dear learner, I hope you liked the tutorial and find it useful. Please leave any comments, suggestions or other feedback at the text box below. Your feedback would be most appreciated!",
+  answer_fn(
+    fn = function(x) {correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
+  ), 
+  rows = 6,
+  correct = NULL
+   ),
+  question_numeric(
+    text = "Dear learner, please rate the experience you had with this tutorial so far on a scale from 1 (very negative experience) to 10 (very positive experience). Your feedback is much appreciated!",
+    answer_fn(
+    fn = function(x) {if (dplyr::between(x, 1, 10)) correct(messages = paste("Thank you for your feedback!", random_praise(language = "en")))}
+  ),
+  min = 1,
+  max = 10,
+  correct = NULL, 
+  allow_retry = TRUE,
+  incorrect = "Hm, it seems that your rating is outside of the selected range. Please try again!"
+  ),
+  caption = "Feedback form"
+)
+
+```
