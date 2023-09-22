@@ -28,7 +28,7 @@ Remotes:
     github::PPBDS/primer.tutorials,
     github::PPBDS/r4ds.tutorials,
     github::rundel/learnrhash,
-    github::lyuben-ivanov/ter (>= 0.1.0)
+    github::lyuben-ivanov/ter
 Suggests: 
     learnrhash (>= 0.2.0),
     primer.tutorials (>= 1.2.2.9000),
